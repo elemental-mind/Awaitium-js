@@ -45,7 +45,7 @@ class SampleObject2
     }
 }
 
-type Wrapped<T> = T extends Object ? Awaited<T> : T;
+type Wrapped<T> = T extends Object ? Awaited<T> & Promise<T> : T;
 
 type ReturnWrapped<T extends Function> =
     T extends (...args: infer A) => Promise<infer R> ? (...args: A) => Wrapped<R> : 
@@ -62,5 +62,7 @@ type objectTest = Awaited<SampleObject>
 async function test()
 {
     let something : objectTest
-    await something.refToSampleObject2.promise2().promise().promise2().own().sampleAsync(1, "two", {three: 3}).own();
+    const result = await something.refToSampleObject2.promise2().promise().promise2().own().sampleAsync(1, "two", {three: 3}).own();
+
+    result.refToSampleObject1;
 }
