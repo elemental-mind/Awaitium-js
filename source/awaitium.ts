@@ -34,14 +34,15 @@ class AsyncResolver<T extends object> extends Function implements ProxyHandler<T
         return this.proxyHandle;
     }
 
-    get(target, property)
+    get(target: any, property: string)
     {
         switch (property)
         {
             case "then":
             case "catch":
             case "finally":
-                return (...args) => this.currentPromise[property](...args);
+                //@ts-ignore
+                return (...args: any[]) => this.currentPromise[property](...args);
             default:
                 this.currentPromise = this.currentPromise.then(resolvedObject =>
                 {
