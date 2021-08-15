@@ -27,21 +27,36 @@ async function helpIAmRunningOutOfVariableNames()
 }
 ````
 # Installation
-There is no package published to npm yet. For now you need to copy paste `awaitium.ts` from the `source` directory of this repository into the source of your project and include it in any file you'd like to use it.
+## Deno
+In deno...
+````
+include { ing } from https://deno.land/x/awaitium@VERSION/source/awaitium.ts
+````
+## Browser & Node
+> Both these environments are untested. Raise an issue if you come across any problems. 
+
+If you use npm do...
+````
+npm i awaitium
+````
+then in your sources...
+````
+include { ing } from "awaitium"
+````
 
 # Usage
 To use Awaitium, simply wrap the entry point of your chain with the `ing(<yourEntryPoint>)` function. An entry point can be one of the following:
 - a function call to a synchronous function: 
 ````
-    await ing(syncFunction()).followedByAnyOf.asyncFunc().syncFunc().orPropOrMember
+await ing(syncFunction()).followedByAnyOf.asyncFunc().syncFunc().orPropOrMember
 ````
 - a function call to an asynchronous function: 
 ````
-    await ing(asyncFunction()).followedByAnyOf.asyncFunc().syncFunc().orPropOrMember
+await ing(asyncFunction()).followedByAnyOf.asyncFunc().syncFunc().orPropOrMember
 ````
 - any object: 
 ````
-    await ing(object).followedByAnyOf.asyncFunc().syncFunc().orPropOrMember
+await ing(object).followedByAnyOf.asyncFunc().syncFunc().orPropOrMember
 ````
 
 The chain following the `ing` call may comprise any combination of the following:
@@ -53,11 +68,11 @@ The chain following the `ing` call may comprise any combination of the following
 # Good to know
 You must start your call chain (the start of the chain is the closing bracket of the `ing` function call) after the first call to an async function - but you can start your chain already at the very beginning:
 ````
-    await ing(object.member.asyncFunction()).syncFunction().doSomethingElseAsync()
+await ing(object.member.asyncFunction()).syncFunction().doSomethingElseAsync()
 ````
 ... is the same as ...
 ````
-    await ing(object).member.asyncFunction().syncFunction().doSomethingElseAsync()
+await ing(object).member.asyncFunction().syncFunction().doSomethingElseAsync()
 ````
 I like it clean: Personally I prefer wrapping objects (or function calls) the earliest possible. 
 
