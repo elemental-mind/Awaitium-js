@@ -1,0 +1,31 @@
+{
+  "name": "awaitium",
+  "version": "1.0.0",
+  "description": "Put your await on fire and chain together async functions, promises and syncronous code in one line.",
+  "main": "release/awaitium.js",
+  "types": "release/awaitium.d.ts",
+  "files": [
+    "release"
+  ],
+  "scripts": {
+    "test": "deno test ./specification/awaitium.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elemental-mind/Awaitium-js.git"
+  },
+  "keywords": [
+    "promises",
+    "async",
+    "async-await",
+    "chaining",
+    "chainable-interface"
+  ],
+  "author": "Magnus Meseck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elemental-mind/Awaitium-js/issues"
+  },
+  "homepage": "https://github.com/elemental-mind/Awaitium-js#readme"
+}
