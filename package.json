@@ -1,6 +1,6 @@
 {
   "name": "awaitium",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Put your await on fire and chain together async functions, promises and syncronous code in one line.",
   "main": "release/awaitium.js",
   "types": "release/awaitium.d.ts",
